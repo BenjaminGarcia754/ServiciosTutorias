@@ -14,7 +14,21 @@ namespace ProyectoTutorias
     [ServiceContract]
     public interface IServiciosProyectoTutorias
     {
+        //Recuperar
         [OperationContract]
         List<InformacionTutoriaPOJO> RecuperarListaTutorias();
+
+        [OperationContract]
+        List<ProfesorPOJO> RecuperarListaTutores();
+
+        //Registrar
+        [OperationContract]
+        bool RegistrarFechaTutoría(InformacionTutoriaPOJO tutoria);
+
+        [OperationContract]
+        bool RegistrarProfesor(ProfesorPOJO nuevoProfesor);
+        [OperationContract]
+        bool RegistrarTutorado(TutoradoPOJO nuevoTutorado);
+
     }
 }

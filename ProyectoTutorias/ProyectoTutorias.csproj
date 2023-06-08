@@ -68,12 +68,16 @@
   <ItemGroup>
     <Compile Include="Modelo\Conexion.cs" />
     <Compile Include="Modelo\DAO\InformacionTutoriaDAO.cs" />
+    <Compile Include="Modelo\DAO\ProfesorDAO.cs" />
+    <Compile Include="Modelo\DAO\TutoradoDAO.cs" />
     <Compile Include="Modelo\DataClassesProyectoTutorias.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DataClassesProyectoTutorias.dbml</DependentUpon>
     </Compile>
     <Compile Include="Modelo\POJO\InformacionTutoriaPOJO.cs" />
+    <Compile Include="Modelo\POJO\ProfesorPOJO.cs" />
+    <Compile Include="Modelo\POJO\TutoradoPOJO.cs" />
     <Compile Include="ServiciosProyectoTutorias.svc.cs">
       <DependentUpon>ServiciosProyectoTutorias.svc</DependentUpon>
     </Compile>

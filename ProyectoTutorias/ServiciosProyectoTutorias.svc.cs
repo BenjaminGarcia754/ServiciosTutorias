@@ -11,13 +11,35 @@ using ProyectoTutorias.Modelo.POJO;
 
 namespace ProyectoTutorias
 {
-    // NOTA: puede usar el comando "Rename" del menú "Refactorizar" para cambiar el nombre de clase "Service1" en el código, en svc y en el archivo de configuración.
-    // NOTE: para iniciar el Cliente de prueba WCF para probar este servicio, seleccione Service1.svc o Service1.svc.cs en el Explorador de soluciones e inicie la depuración.
     public class ServiciosProyectoTutorias : IServiciosProyectoTutorias
     {
+
+        //Recuperar
         public List<InformacionTutoriaPOJO> RecuperarListaTutorias()
         {
             return InformacionTutoriaDAO.RecuperarListaTutorias();
+        }
+
+        public List<ProfesorPOJO> RecuperarListaTutores()
+        {
+            return ProfesorDAO.RecuperarListaTutores();
+        }
+
+
+        //Registrar
+        public bool RegistrarFechaTutoría(InformacionTutoriaPOJO tutoria)
+        {
+            return InformacionTutoriaDAO.RegistrarFechaTutoría(tutoria);
+        }
+
+        public bool RegistrarProfesor(ProfesorPOJO nuevoProfesor)
+        {
+            return ProfesorDAO.RegistrarProfesor(nuevoProfesor);
+        }
+
+        public bool RegistrarTutorado(TutoradoPOJO nuevoTutorado)
+        {
+            return TutoradoDAO.RegistrarTutorado(nuevoTutorado);
         }
     }
 }
