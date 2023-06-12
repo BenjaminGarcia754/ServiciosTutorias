@@ -41,5 +41,24 @@ namespace ProyectoTutorias
         {
             return TutoradoDAO.RegistrarTutorado(nuevoTutorado);
         }
+
+        public bool RegistrarReporteTutoria(ReporteTutoriaPOJO nuevoReporteTutoria)
+        {
+            return ReporteTutoriaDAO.RegistrarReporteTutoria(nuevoReporteTutoria);
+        }
+
+        //Editar
+
+        public bool EditarEstudiante(TutoradoPOJO tutoradoAEdtitar)
+        {
+            return TutoradoDAO.EditarEstudiante(tutoradoAEdtitar);
+        }
+
+        //Iniciar Sesion
+
+        public bool iniciarSesion(string username, string password)
+        {
+            return UsuarioSesionDAO.IniciarSesion(username, password);
+        }
     }
 }

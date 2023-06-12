@@ -24,11 +24,19 @@ namespace ProyectoTutorias
         //Registrar
         [OperationContract]
         bool RegistrarFechaTutoría(InformacionTutoriaPOJO tutoria);
-
         [OperationContract]
         bool RegistrarProfesor(ProfesorPOJO nuevoProfesor);
         [OperationContract]
         bool RegistrarTutorado(TutoradoPOJO nuevoTutorado);
+        [OperationContract]
+        bool RegistrarReporteTutoria(ReporteTutoriaPOJO nuevoReporteTutoria);
 
+        //Editar
+        [OperationContract]
+        bool EditarEstudiante(TutoradoPOJO tutoradoAEdtitar);
+
+        //Iniciar Sesion
+        [OperationContract]
+        bool iniciarSesion(string username, string password);
     }
 }
