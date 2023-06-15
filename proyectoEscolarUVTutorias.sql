@@ -99,6 +99,14 @@ Create Table ReporteTutoria(
 	idTutor int foreign key references Profesor(idProfesor) not null,
 );
 
+Create Table HorarioTutoria(
+	idHorarioTutoria int identity primary key not null,
+	horarioTutoria smalldatetime,
+	idTutoria int foreign key references Tutoria(idTutoria) not null,
+	idTutorado int foreign key references Tutorado(idTutorado) not null,
+	idTutor int foreign key references Profesor(idProfesor) not null,
+);
+
 --Cuando se asignen los tipos problematica se agregaran en la BD
 
 Create Table Problematica(
