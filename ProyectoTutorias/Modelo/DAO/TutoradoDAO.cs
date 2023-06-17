@@ -34,6 +34,8 @@ namespace ProyectoTutorias.Modelo.DAO
             return respuesta;
         }
 
+
+
         public static bool EditarEstudiante(TutoradoPOJO nuevoTutorado)
         {
             bool respuesta;
@@ -61,7 +63,6 @@ namespace ProyectoTutorias.Modelo.DAO
 
                 respuesta = false;
             }
-            
             return respuesta;
         }
     }

@@ -62,6 +62,7 @@
       <Association Name="Profesor_Solucion" Member="Solucion" ThisKey="idProfesor" OtherKey="idAcademico" Type="Solucion" />
       <Association Name="Profesor_Tutorado" Member="Tutorado" ThisKey="idProfesor" OtherKey="tutorAcademico" Type="Tutorado" />
       <Association Name="Profesor_Tutoria" Member="Tutoria" ThisKey="idProfesor" OtherKey="idTutor" Type="Tutoria" />
+      <Association Name="Profesor_HorarioTutoria" Member="HorarioTutoria" ThisKey="idProfesor" OtherKey="idTutor" Type="HorarioTutoria" />
       <Association Name="Rol_Profesor" Member="Rol" ThisKey="idRol" OtherKey="idRol" Type="Rol" IsForeignKey="true" />
     </Type>
   </Table>
@@ -139,6 +140,7 @@
       <Association Name="Tutorado_ReporteTutoria" Member="ReporteTutoria" ThisKey="idTutorado" OtherKey="idTutorado" Type="ReporteTutoria" />
       <Association Name="Tutorado_Solucion" Member="Solucion" ThisKey="idTutorado" OtherKey="idTutorado" Type="Solucion" />
       <Association Name="Tutorado_Tutoria" Member="Tutoria" ThisKey="idTutorado" OtherKey="idTutorado" Type="Tutoria" />
+      <Association Name="Tutorado_HorarioTutoria" Member="HorarioTutoria" ThisKey="idTutorado" OtherKey="idTutorado" Type="HorarioTutoria" />
       <Association Name="ProgramaEducativo_Tutorado" Member="ProgramaEducativo" ThisKey="idProgramaEducativo" OtherKey="idProgramaEducativo" Type="ProgramaEducativo" IsForeignKey="true" />
       <Association Name="Profesor_Tutorado" Member="Profesor" ThisKey="tutorAcademico" OtherKey="idProfesor" Type="Profesor" IsForeignKey="true" />
     </Type>
@@ -150,6 +152,7 @@
       <Column Name="idInformacionTutoria" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="idTutor" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="Tutoria_ReporteTutoria" Member="ReporteTutoria" ThisKey="idTutoria" OtherKey="idTutoria" Type="ReporteTutoria" />
+      <Association Name="Tutoria_HorarioTutoria" Member="HorarioTutoria" ThisKey="idTutoria" OtherKey="idTutoria" Type="HorarioTutoria" />
       <Association Name="InformacionTutoria_Tutoria" Member="InformacionTutoria" ThisKey="idInformacionTutoria" OtherKey="idInformacionTutoria" Type="InformacionTutoria" IsForeignKey="true" />
       <Association Name="Tutorado_Tutoria" Member="Tutorado" ThisKey="idTutorado" OtherKey="idTutorado" Type="Tutorado" IsForeignKey="true" />
       <Association Name="Profesor_Tutoria" Member="Profesor" ThisKey="idTutor" OtherKey="idProfesor" Type="Profesor" IsForeignKey="true" />
@@ -163,6 +166,18 @@
       <Column Name="contraseña" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="nombre" Type="System.String" DbType="VarChar(75) NOT NULL" CanBeNull="false" />
       <Association Name="Rol_UsuarioSesion" Member="Rol" ThisKey="idRol" OtherKey="idRol" Type="Rol" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.HorarioTutoria" Member="HorarioTutoria">
+    <Type Name="HorarioTutoria">
+      <Column Name="idHorarioTutoria" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="horarioTutoria" Member="horarioTutoria1" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="idTutoria" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="idTutorado" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="idTutor" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Tutoria_HorarioTutoria" Member="Tutoria" ThisKey="idTutoria" OtherKey="idTutoria" Type="Tutoria" IsForeignKey="true" />
+      <Association Name="Tutorado_HorarioTutoria" Member="Tutorado" ThisKey="idTutorado" OtherKey="idTutorado" Type="Tutorado" IsForeignKey="true" />
+      <Association Name="Profesor_HorarioTutoria" Member="Profesor" ThisKey="idTutor" OtherKey="idProfesor" Type="Profesor" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

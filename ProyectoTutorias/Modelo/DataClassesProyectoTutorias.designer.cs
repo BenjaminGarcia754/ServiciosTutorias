@@ -72,6 +72,9 @@ namespace ProyectoTutorias.Modelo
     partial void InsertUsuarioSesion(UsuarioSesion instance);
     partial void UpdateUsuarioSesion(UsuarioSesion instance);
     partial void DeleteUsuarioSesion(UsuarioSesion instance);
+    partial void InsertHorarioTutoria(HorarioTutoria instance);
+    partial void UpdateHorarioTutoria(HorarioTutoria instance);
+    partial void DeleteHorarioTutoria(HorarioTutoria instance);
     #endregion
 		
 		public DataClassesProyectoTutoriasDataContext(string connection) : 
@@ -207,6 +210,14 @@ namespace ProyectoTutorias.Modelo
 			get
 			{
 				return this.GetTable<UsuarioSesion>();
+			}
+		}
+		
+		public System.Data.Linq.Table<HorarioTutoria> HorarioTutoria
+		{
+			get
+			{
+				return this.GetTable<HorarioTutoria>();
 			}
 		}
 	}
@@ -1271,6 +1282,8 @@ namespace ProyectoTutorias.Modelo
 		
 		private EntitySet<Tutoria> _Tutoria;
 		
+		private EntitySet<HorarioTutoria> _HorarioTutoria;
+		
 		private EntityRef<Rol> _Rol;
 		
     #region Definiciones de métodos de extensibilidad
@@ -1297,6 +1310,7 @@ namespace ProyectoTutorias.Modelo
 			this._Solucion = new EntitySet<Solucion>(new Action<Solucion>(this.attach_Solucion), new Action<Solucion>(this.detach_Solucion));
 			this._Tutorado = new EntitySet<Tutorado>(new Action<Tutorado>(this.attach_Tutorado), new Action<Tutorado>(this.detach_Tutorado));
 			this._Tutoria = new EntitySet<Tutoria>(new Action<Tutoria>(this.attach_Tutoria), new Action<Tutoria>(this.detach_Tutoria));
+			this._HorarioTutoria = new EntitySet<HorarioTutoria>(new Action<HorarioTutoria>(this.attach_HorarioTutoria), new Action<HorarioTutoria>(this.detach_HorarioTutoria));
 			this._Rol = default(EntityRef<Rol>);
 			OnCreated();
 		}
@@ -1483,6 +1497,19 @@ namespace ProyectoTutorias.Modelo
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Profesor_HorarioTutoria", Storage="_HorarioTutoria", ThisKey="idProfesor", OtherKey="idTutor")]
+		public EntitySet<HorarioTutoria> HorarioTutoria
+		{
+			get
+			{
+				return this._HorarioTutoria;
+			}
+			set
+			{
+				this._HorarioTutoria.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Rol_Profesor", Storage="_Rol", ThisKey="idRol", OtherKey="idRol", IsForeignKey=true)]
 		public Rol Rol
 		{
@@ -1604,6 +1631,18 @@ namespace ProyectoTutorias.Modelo
 		}
 		
 		private void detach_Tutoria(Tutoria entity)
+		{
+			this.SendPropertyChanging();
+			entity.Profesor = null;
+		}
+		
+		private void attach_HorarioTutoria(HorarioTutoria entity)
+		{
+			this.SendPropertyChanging();
+			entity.Profesor = this;
+		}
+		
+		private void detach_HorarioTutoria(HorarioTutoria entity)
 		{
 			this.SendPropertyChanging();
 			entity.Profesor = null;
@@ -2950,6 +2989,8 @@ namespace ProyectoTutorias.Modelo
 		
 		private EntitySet<Tutoria> _Tutoria;
 		
+		private EntitySet<HorarioTutoria> _HorarioTutoria;
+		
 		private EntityRef<ProgramaEducativo> _ProgramaEducativo;
 		
 		private EntityRef<Profesor> _Profesor;
@@ -2983,6 +3024,7 @@ namespace ProyectoTutorias.Modelo
 			this._ReporteTutoria = new EntitySet<ReporteTutoria>(new Action<ReporteTutoria>(this.attach_ReporteTutoria), new Action<ReporteTutoria>(this.detach_ReporteTutoria));
 			this._Solucion = new EntitySet<Solucion>(new Action<Solucion>(this.attach_Solucion), new Action<Solucion>(this.detach_Solucion));
 			this._Tutoria = new EntitySet<Tutoria>(new Action<Tutoria>(this.attach_Tutoria), new Action<Tutoria>(this.detach_Tutoria));
+			this._HorarioTutoria = new EntitySet<HorarioTutoria>(new Action<HorarioTutoria>(this.attach_HorarioTutoria), new Action<HorarioTutoria>(this.detach_HorarioTutoria));
 			this._ProgramaEducativo = default(EntityRef<ProgramaEducativo>);
 			this._Profesor = default(EntityRef<Profesor>);
 			OnCreated();
@@ -3215,6 +3257,19 @@ namespace ProyectoTutorias.Modelo
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Tutorado_HorarioTutoria", Storage="_HorarioTutoria", ThisKey="idTutorado", OtherKey="idTutorado")]
+		public EntitySet<HorarioTutoria> HorarioTutoria
+		{
+			get
+			{
+				return this._HorarioTutoria;
+			}
+			set
+			{
+				this._HorarioTutoria.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ProgramaEducativo_Tutorado", Storage="_ProgramaEducativo", ThisKey="idProgramaEducativo", OtherKey="idProgramaEducativo", IsForeignKey=true)]
 		public ProgramaEducativo ProgramaEducativo
 		{
@@ -3338,6 +3393,18 @@ namespace ProyectoTutorias.Modelo
 			this.SendPropertyChanging();
 			entity.Tutorado = null;
 		}
+		
+		private void attach_HorarioTutoria(HorarioTutoria entity)
+		{
+			this.SendPropertyChanging();
+			entity.Tutorado = this;
+		}
+		
+		private void detach_HorarioTutoria(HorarioTutoria entity)
+		{
+			this.SendPropertyChanging();
+			entity.Tutorado = null;
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Tutoria")]
@@ -3355,6 +3422,8 @@ namespace ProyectoTutorias.Modelo
 		private int _idTutor;
 		
 		private EntitySet<ReporteTutoria> _ReporteTutoria;
+		
+		private EntitySet<HorarioTutoria> _HorarioTutoria;
 		
 		private EntityRef<InformacionTutoria> _InformacionTutoria;
 		
@@ -3379,6 +3448,7 @@ namespace ProyectoTutorias.Modelo
 		public Tutoria()
 		{
 			this._ReporteTutoria = new EntitySet<ReporteTutoria>(new Action<ReporteTutoria>(this.attach_ReporteTutoria), new Action<ReporteTutoria>(this.detach_ReporteTutoria));
+			this._HorarioTutoria = new EntitySet<HorarioTutoria>(new Action<HorarioTutoria>(this.attach_HorarioTutoria), new Action<HorarioTutoria>(this.detach_HorarioTutoria));
 			this._InformacionTutoria = default(EntityRef<InformacionTutoria>);
 			this._Tutorado = default(EntityRef<Tutorado>);
 			this._Profesor = default(EntityRef<Profesor>);
@@ -3487,6 +3557,19 @@ namespace ProyectoTutorias.Modelo
 			set
 			{
 				this._ReporteTutoria.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Tutoria_HorarioTutoria", Storage="_HorarioTutoria", ThisKey="idTutoria", OtherKey="idTutoria")]
+		public EntitySet<HorarioTutoria> HorarioTutoria
+		{
+			get
+			{
+				return this._HorarioTutoria;
+			}
+			set
+			{
+				this._HorarioTutoria.Assign(value);
 			}
 		}
 		
@@ -3619,6 +3702,18 @@ namespace ProyectoTutorias.Modelo
 		}
 		
 		private void detach_ReporteTutoria(ReporteTutoria entity)
+		{
+			this.SendPropertyChanging();
+			entity.Tutoria = null;
+		}
+		
+		private void attach_HorarioTutoria(HorarioTutoria entity)
+		{
+			this.SendPropertyChanging();
+			entity.Tutoria = this;
+		}
+		
+		private void detach_HorarioTutoria(HorarioTutoria entity)
 		{
 			this.SendPropertyChanging();
 			entity.Tutoria = null;
@@ -3799,6 +3894,287 @@ namespace ProyectoTutorias.Modelo
 						this._idRol = default(int);
 					}
 					this.SendPropertyChanged("Rol");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.HorarioTutoria")]
+	public partial class HorarioTutoria : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _idHorarioTutoria;
+		
+		private System.Nullable<System.DateTime> _horarioTutoria1;
+		
+		private int _idTutoria;
+		
+		private int _idTutorado;
+		
+		private int _idTutor;
+		
+		private EntityRef<Tutoria> _Tutoria;
+		
+		private EntityRef<Tutorado> _Tutorado;
+		
+		private EntityRef<Profesor> _Profesor;
+		
+    #region Definiciones de métodos de extensibilidad
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidHorarioTutoriaChanging(int value);
+    partial void OnidHorarioTutoriaChanged();
+    partial void OnhorarioTutoria1Changing(System.Nullable<System.DateTime> value);
+    partial void OnhorarioTutoria1Changed();
+    partial void OnidTutoriaChanging(int value);
+    partial void OnidTutoriaChanged();
+    partial void OnidTutoradoChanging(int value);
+    partial void OnidTutoradoChanged();
+    partial void OnidTutorChanging(int value);
+    partial void OnidTutorChanged();
+    #endregion
+		
+		public HorarioTutoria()
+		{
+			this._Tutoria = default(EntityRef<Tutoria>);
+			this._Tutorado = default(EntityRef<Tutorado>);
+			this._Profesor = default(EntityRef<Profesor>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idHorarioTutoria", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int idHorarioTutoria
+		{
+			get
+			{
+				return this._idHorarioTutoria;
+			}
+			set
+			{
+				if ((this._idHorarioTutoria != value))
+				{
+					this.OnidHorarioTutoriaChanging(value);
+					this.SendPropertyChanging();
+					this._idHorarioTutoria = value;
+					this.SendPropertyChanged("idHorarioTutoria");
+					this.OnidHorarioTutoriaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="horarioTutoria", Storage="_horarioTutoria1", DbType="SmallDateTime")]
+		public System.Nullable<System.DateTime> horarioTutoria1
+		{
+			get
+			{
+				return this._horarioTutoria1;
+			}
+			set
+			{
+				if ((this._horarioTutoria1 != value))
+				{
+					this.OnhorarioTutoria1Changing(value);
+					this.SendPropertyChanging();
+					this._horarioTutoria1 = value;
+					this.SendPropertyChanged("horarioTutoria1");
+					this.OnhorarioTutoria1Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idTutoria", DbType="Int NOT NULL")]
+		public int idTutoria
+		{
+			get
+			{
+				return this._idTutoria;
+			}
+			set
+			{
+				if ((this._idTutoria != value))
+				{
+					if (this._Tutoria.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnidTutoriaChanging(value);
+					this.SendPropertyChanging();
+					this._idTutoria = value;
+					this.SendPropertyChanged("idTutoria");
+					this.OnidTutoriaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idTutorado", DbType="Int NOT NULL")]
+		public int idTutorado
+		{
+			get
+			{
+				return this._idTutorado;
+			}
+			set
+			{
+				if ((this._idTutorado != value))
+				{
+					if (this._Tutorado.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnidTutoradoChanging(value);
+					this.SendPropertyChanging();
+					this._idTutorado = value;
+					this.SendPropertyChanged("idTutorado");
+					this.OnidTutoradoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idTutor", DbType="Int NOT NULL")]
+		public int idTutor
+		{
+			get
+			{
+				return this._idTutor;
+			}
+			set
+			{
+				if ((this._idTutor != value))
+				{
+					if (this._Profesor.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnidTutorChanging(value);
+					this.SendPropertyChanging();
+					this._idTutor = value;
+					this.SendPropertyChanged("idTutor");
+					this.OnidTutorChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Tutoria_HorarioTutoria", Storage="_Tutoria", ThisKey="idTutoria", OtherKey="idTutoria", IsForeignKey=true)]
+		public Tutoria Tutoria
+		{
+			get
+			{
+				return this._Tutoria.Entity;
+			}
+			set
+			{
+				Tutoria previousValue = this._Tutoria.Entity;
+				if (((previousValue != value) 
+							|| (this._Tutoria.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Tutoria.Entity = null;
+						previousValue.HorarioTutoria.Remove(this);
+					}
+					this._Tutoria.Entity = value;
+					if ((value != null))
+					{
+						value.HorarioTutoria.Add(this);
+						this._idTutoria = value.idTutoria;
+					}
+					else
+					{
+						this._idTutoria = default(int);
+					}
+					this.SendPropertyChanged("Tutoria");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Tutorado_HorarioTutoria", Storage="_Tutorado", ThisKey="idTutorado", OtherKey="idTutorado", IsForeignKey=true)]
+		public Tutorado Tutorado
+		{
+			get
+			{
+				return this._Tutorado.Entity;
+			}
+			set
+			{
+				Tutorado previousValue = this._Tutorado.Entity;
+				if (((previousValue != value) 
+							|| (this._Tutorado.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Tutorado.Entity = null;
+						previousValue.HorarioTutoria.Remove(this);
+					}
+					this._Tutorado.Entity = value;
+					if ((value != null))
+					{
+						value.HorarioTutoria.Add(this);
+						this._idTutorado = value.idTutorado;
+					}
+					else
+					{
+						this._idTutorado = default(int);
+					}
+					this.SendPropertyChanged("Tutorado");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Profesor_HorarioTutoria", Storage="_Profesor", ThisKey="idTutor", OtherKey="idProfesor", IsForeignKey=true)]
+		public Profesor Profesor
+		{
+			get
+			{
+				return this._Profesor.Entity;
+			}
+			set
+			{
+				Profesor previousValue = this._Profesor.Entity;
+				if (((previousValue != value) 
+							|| (this._Profesor.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Profesor.Entity = null;
+						previousValue.HorarioTutoria.Remove(this);
+					}
+					this._Profesor.Entity = value;
+					if ((value != null))
+					{
+						value.HorarioTutoria.Add(this);
+						this._idTutor = value.idProfesor;
+					}
+					else
+					{
+						this._idTutor = default(int);
+					}
+					this.SendPropertyChanged("Profesor");
 				}
 			}
 		}

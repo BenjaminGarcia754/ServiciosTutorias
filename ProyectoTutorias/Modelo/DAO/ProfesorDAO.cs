@@ -35,9 +35,9 @@ namespace ProyectoTutorias.Modelo.DAO
         {
             List<ProfesorPOJO> infoTutores = new List<ProfesorPOJO>();
             var conexionBD = Conexion.GenerarConexion();
-            var tutoresRecuperados = from tutoresQuery in conexionBD.Profesor
+            var tutoresRecuperados = (from tutoresQuery in conexionBD.Profesor
                                         where tutoresQuery.idRol == 3
-                                        select tutoresQuery;
+                                        select tutoresQuery);
 
             foreach (var profesor in tutoresRecuperados)
             {

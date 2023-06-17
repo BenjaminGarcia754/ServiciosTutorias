@@ -69,6 +69,7 @@
     <Compile Include="Modelo\Conexion.cs" />
     <Compile Include="Modelo\DAO\InformacionTutoriaDAO.cs" />
     <Compile Include="Modelo\DAO\ProfesorDAO.cs" />
+    <Compile Include="Modelo\DAO\SolucionDAO.cs" />
     <Compile Include="Modelo\DAO\TutoradoDAO.cs" />
     <Compile Include="Modelo\DAO\ProfesorDAO.cs" />
     <Compile Include="Modelo\DAO\ReporteTutoriaDAO.cs" />
@@ -81,9 +82,12 @@
       <DependentUpon>DataClassesProyectoTutorias.dbml</DependentUpon>
     </Compile>
     <Compile Include="Modelo\POJO\ClaseJoin.cs" />
+    <Compile Include="Modelo\POJO\HorarioTutoriaPOJO.cs" />
     <Compile Include="Modelo\POJO\InformacionTutoriaPOJO.cs" />
     <Compile Include="Modelo\POJO\ProfesorPOJO.cs" />
     <Compile Include="Modelo\POJO\ReporteTutoriaPOJO.cs" />
+    <Compile Include="Modelo\POJO\SolucionPOJO.cs" />
+    <Compile Include="Modelo\POJO\TipoProblematicaPOJO.cs" />
     <Compile Include="Modelo\POJO\TutoradoPOJO.cs" />
     <Compile Include="Modelo\POJO\ProblematicaAcademicaPOJO.cs" />
     <Compile Include="Modelo\POJO\UsuarioSesionPOJO.cs" />
