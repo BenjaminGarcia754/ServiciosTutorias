@@ -67,9 +67,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Modelo\Conexion.cs" />
+    <Compile Include="Modelo\DAO\HorarioTutoriaDAO.cs" />
     <Compile Include="Modelo\DAO\InformacionTutoriaDAO.cs" />
     <Compile Include="Modelo\DAO\ProfesorDAO.cs" />
     <Compile Include="Modelo\DAO\SolucionDAO.cs" />
+    <Compile Include="Modelo\DAO\TipoProblematicaDAO.cs" />
     <Compile Include="Modelo\DAO\TutoradoDAO.cs" />
     <Compile Include="Modelo\DAO\ProfesorDAO.cs" />
     <Compile Include="Modelo\DAO\ReporteTutoriaDAO.cs" />
