@@ -27,6 +27,7 @@ namespace ProyectoTutorias.Modelo.DAO
             catch (Exception ex)
             {
                 respuesta = false;
+                Console.WriteLine(ex.Source);
             }
 
             return respuesta;

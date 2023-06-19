@@ -12,9 +12,9 @@ namespace ProyectoTutorias.Modelo.DAO
         {
             bool respuesta;
             Profesor profesor = new Profesor();
-            var conexionBD = Conexion.GenerarConexion();
             try
             {
+                var conexionBD = Conexion.GenerarConexion();
                 profesor.telefono = nuevoProfesor.telefono;
                 profesor.nombre = nuevoProfesor.nombre;
                 profesor.numeroDeEmpleado = nuevoProfesor.numeroDeEmpleado;
@@ -34,22 +34,28 @@ namespace ProyectoTutorias.Modelo.DAO
         public static List<ProfesorPOJO> RecuperarListaTutores()
         {
             List<ProfesorPOJO> infoTutores = new List<ProfesorPOJO>();
-            var conexionBD = Conexion.GenerarConexion();
-            var tutoresRecuperados = (from tutoresQuery in conexionBD.Profesor
-                                        where tutoresQuery.idRol == 3
-                                        select tutoresQuery);
-
-            foreach (var profesor in tutoresRecuperados)
+            try
             {
-                ProfesorPOJO tutor = new ProfesorPOJO();
-                tutor.idProfesor = profesor.idProfesor;
-                tutor.nombre = profesor.nombre;
-                tutor.numeroDeEmpleado = profesor.numeroDeEmpleado;
-                tutor.telefono = profesor.telefono;
-                tutor.idRol = profesor.idRol;
-                infoTutores.Add(tutor);
-            }
+                var conexionBD = Conexion.GenerarConexion();
+                var tutoresRecuperados = (from tutoresQuery in conexionBD.Profesor
+                                          where tutoresQuery.idRol == 3
+                                          select tutoresQuery);
 
+                foreach (var profesor in tutoresRecuperados)
+                {
+                    ProfesorPOJO tutor = new ProfesorPOJO();
+                    tutor.idProfesor = profesor.idProfesor;
+                    tutor.nombre = profesor.nombre;
+                    tutor.numeroDeEmpleado = profesor.numeroDeEmpleado;
+                    tutor.telefono = profesor.telefono;
+                    tutor.idRol = profesor.idRol;
+                    infoTutores.Add(tutor);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
             return infoTutores;
         }
     }

@@ -37,6 +37,6 @@ namespace ProyectoTutorias
 
         //Iniciar Sesion
         [OperationContract]
-        bool iniciarSesion(string username, string password);
+        Mensaje iniciarSesion(string username, string password);
     }
 }

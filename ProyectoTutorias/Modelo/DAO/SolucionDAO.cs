@@ -25,9 +25,10 @@ namespace ProyectoTutorias.Modelo.DAO
                 conexionBD.SubmitChanges();
                 respuesta = true;
             }
-            catch (Exception)
-            {
-                respuesta = false;
+            catch (Exception ex) 
+            { 
+                respuesta = false; 
+                Console.WriteLine(ex.Message); 
             }
             return respuesta;
         }
@@ -36,10 +37,9 @@ namespace ProyectoTutorias.Modelo.DAO
         public static bool ModificarSolucion(SolucionPOJO solucionModificada)
         {
             bool respuesta;
-            var conexionBD = Conexion.GenerarConexion();
-
             try
             {
+                var conexionBD = Conexion.GenerarConexion();
                 Solucion solucion = (from solucionSolicitada in conexionBD.Solucion
                                      where solucionSolicitada.idProblematica == solucionModificada.idProblematica
                                      select solucionSolicitada).FirstOrDefault();
@@ -52,10 +52,10 @@ namespace ProyectoTutorias.Modelo.DAO
                 conexionBD.SubmitChanges();
                 respuesta = true;
             }
-            catch (Exception)
-            {
-
-                respuesta = false;
+            catch (Exception ex) 
+            { 
+                respuesta = false; 
+                Console.WriteLine(ex.Message); 
             }
 
             return respuesta;

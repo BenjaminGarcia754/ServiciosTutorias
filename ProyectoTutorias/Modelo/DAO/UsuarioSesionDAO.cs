@@ -8,23 +8,34 @@ namespace ProyectoTutorias.Modelo.DAO
 {
     public static class UsuarioSesionDAO
     {
-        public static bool IniciarSesion(string username, string password)
+        public static Mensaje IniciarSesion(string username, string password)
         {
             bool respuesta;
-            var conexionBD = Conexion.GenerarConexion();
+            Mensaje nuevoMensaje = new Mensaje();
+            UsuarioSesionPOJO usuarioEncontrado = new UsuarioSesionPOJO();
             try
             {
+                var conexionBD = Conexion.GenerarConexion();
                 UsuarioSesion usuarioBusqueda = (from usuarioQuery in conexionBD.UsuarioSesion
                                             where usuarioQuery.username == username && usuarioQuery.contraseña == password
                                             select usuarioQuery).FirstOrDefault();
                 respuesta = usuarioBusqueda != null ? true : false ;
+                usuarioEncontrado.username = usuarioBusqueda.username;
+                usuarioEncontrado.idRol = usuarioBusqueda.idRol;
+                usuarioEncontrado.idUsuario = usuarioBusqueda.idUsuario;
+                usuarioEncontrado.nombre = usuarioBusqueda.nombre;
+                nuevoMensaje.mensaje = "Usuario Encontrado Satisfactoriamente";
+                nuevoMensaje.confirmacion = respuesta;
+                nuevoMensaje.usuarioSesion = usuarioEncontrado;
             }
             catch (Exception)
             {
                 respuesta = false;
+                nuevoMensaje.mensaje = "Usuario Encontrado Satisfactoriamente";
+                nuevoMensaje.confirmacion = respuesta;
             }
             
-            return respuesta;
+            return nuevoMensaje;
         }
     }
 }

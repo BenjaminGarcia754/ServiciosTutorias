@@ -83,6 +83,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataClassesProyectoTutorias.dbml</DependentUpon>
     </Compile>
+    <Compile Include="Modelo\Mensaje.cs" />
     <Compile Include="Modelo\POJO\ClaseJoin.cs" />
     <Compile Include="Modelo\POJO\HorarioTutoriaPOJO.cs" />
     <Compile Include="Modelo\POJO\InformacionTutoriaPOJO.cs" />

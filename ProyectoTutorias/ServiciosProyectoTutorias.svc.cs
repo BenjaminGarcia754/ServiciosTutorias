@@ -56,7 +56,7 @@ namespace ProyectoTutorias
 
         //Iniciar Sesion
 
-        public bool iniciarSesion(string username, string password)
+        public Mensaje iniciarSesion(string username, string password)
         {
             return UsuarioSesionDAO.IniciarSesion(username, password);
         }

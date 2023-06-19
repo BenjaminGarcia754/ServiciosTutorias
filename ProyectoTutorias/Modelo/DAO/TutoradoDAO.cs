@@ -11,10 +11,10 @@ namespace ProyectoTutorias.Modelo.DAO
         public static bool RegistrarTutorado(TutoradoPOJO nuevoTutorado)
         {
             bool respuesta;
-            var conexionBD = Conexion.GenerarConexion();
             Tutorado tutoradoModelo = new Tutorado();
             try
             {
+                var conexionBD = Conexion.GenerarConexion();
                 tutoradoModelo.idProgramaEducativo = nuevoTutorado.idProgramaEducativo;
                 tutoradoModelo.tutorAcademico = nuevoTutorado.tutorAcademico;
                 tutoradoModelo.estaActivo = nuevoTutorado.estaActivo;
@@ -27,9 +27,11 @@ namespace ProyectoTutorias.Modelo.DAO
                 conexionBD.SubmitChanges();
                 respuesta = true;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 respuesta = false;
+                Console.WriteLine(ex.Message);
+
             }
             return respuesta;
         }
@@ -39,10 +41,9 @@ namespace ProyectoTutorias.Modelo.DAO
         public static bool EditarEstudiante(TutoradoPOJO nuevoTutorado)
         {
             bool respuesta;
-            var conexionBD = Conexion.GenerarConexion();
-
             try
             {
+                var conexionBD = Conexion.GenerarConexion();
                 Tutorado tutorado = (from tutoradoQuery in conexionBD.Tutorado
                                      where tutoradoQuery.idTutorado == nuevoTutorado.idTutorado
                                      select tutoradoQuery).FirstOrDefault();
@@ -58,10 +59,10 @@ namespace ProyectoTutorias.Modelo.DAO
                 conexionBD.SubmitChanges();
                 respuesta = true;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
                 respuesta = false;
+                Console.WriteLine(ex.Message);
             }
             return respuesta;
         }

@@ -11,22 +11,28 @@ namespace ProyectoTutorias.Modelo.DAO
         public static List<InformacionTutoriaPOJO> RecuperarListaTutorias()
         {
             List<InformacionTutoriaPOJO> infoTutoriasPojo = new List<InformacionTutoriaPOJO>();
-            var conexionBD = Conexion.GenerarConexion();
-            var tutoriasRecuperadas = from infoTutorias in conexionBD.InformacionTutoria
-                                      select infoTutorias;
-
-            foreach (var tutoria in tutoriasRecuperadas)
+            try
             {
-                InformacionTutoriaPOJO infoTutoria = new InformacionTutoriaPOJO();
-                infoTutoria.idInformacionTutoria = tutoria.idInformacionTutoria;
-                infoTutoria.idPeriodoEscolar = tutoria.idPeriodoEscolar;
-                infoTutoria.fechaEntrega = tutoria.fechaEntrega;
-                infoTutoria.fechaSesion = tutoria.fechaSesion;
-                infoTutoria.noSesion = tutoria.noSesion;
+                var conexionBD = Conexion.GenerarConexion();
+                var tutoriasRecuperadas = from infoTutorias in conexionBD.InformacionTutoria
+                                          select infoTutorias;
 
-                infoTutoriasPojo.Add(infoTutoria);
+                foreach (var tutoria in tutoriasRecuperadas)
+                {
+                    InformacionTutoriaPOJO infoTutoria = new InformacionTutoriaPOJO();
+                    infoTutoria.idInformacionTutoria = tutoria.idInformacionTutoria;
+                    infoTutoria.idPeriodoEscolar = tutoria.idPeriodoEscolar;
+                    infoTutoria.fechaEntrega = tutoria.fechaEntrega;
+                    infoTutoria.fechaSesion = tutoria.fechaSesion;
+                    infoTutoria.noSesion = tutoria.noSesion;
+                    infoTutoriasPojo.Add(infoTutoria);
+                }
             }
-
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            
             return infoTutoriasPojo;
         }
 
@@ -53,9 +59,10 @@ namespace ProyectoTutorias.Modelo.DAO
                 conexionBD.SubmitChanges();                
                 respuesta = true;
             }
-            catch (Exception)
-            {
-                respuesta = false;
+            catch (Exception ex) 
+            { 
+                respuesta = false; 
+                Console.WriteLine(ex.Message);
             }
             return respuesta;
         }

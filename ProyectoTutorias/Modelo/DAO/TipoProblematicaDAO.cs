@@ -12,9 +12,9 @@ namespace ProyectoTutorias.Modelo.DAO
         {
             TipoProblematicaPOJO problematicaIdentificada = new TipoProblematicaPOJO();
             string tipoDeProblematica;
-            var conexionBD = Conexion.GenerarConexion();
             try
             {
+                var conexionBD = Conexion.GenerarConexion();
                 TipoProblematica tipoProblematicaTabla = (from consultaTipo in conexionBD.TipoProblematica
                                                           where consultaTipo.idTipoProblematica == opcion
                                                           select consultaTipo).FirstOrDefault();
@@ -27,6 +27,7 @@ namespace ProyectoTutorias.Modelo.DAO
             catch (Exception ex)
             {
                 Console.WriteLine("Imposible conectarse con la base de datos, por favor intente más tarde.");
+                Console.WriteLine(ex.ToString());
                 tipoDeProblematica = "error";
             }
 
