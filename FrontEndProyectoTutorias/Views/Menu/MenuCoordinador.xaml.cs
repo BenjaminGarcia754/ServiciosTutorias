@@ -11,16 +11,15 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using FrontEndProyectoTutorias.Views;
 
-namespace FrontEndProyectoTutorias.Views
+namespace FrontEndProyectoTutorias.Views.Menu
 {
     /// <summary>
-    /// Lógica de interacción para MenuTutor.xaml
+    /// Lógica de interacción para MenuCoordinador.xaml
     /// </summary>
-    public partial class MenuTutor : Window
+    public partial class MenuCoordinador : Window
     {
-        public MenuTutor()
+        public MenuCoordinador()
         {
             InitializeComponent();
         }
@@ -32,10 +31,10 @@ namespace FrontEndProyectoTutorias.Views
             this.Close();
         }
 
-        private void Button_Registrar_Horario_Tutoria(object sender, RoutedEventArgs e)
+        private void Button_Registrar_Tutor_Academico(object sender, RoutedEventArgs e)
         {
-            AdministrarHorariosTutoria horariosTutoria = new AdministrarHorariosTutoria();
-            horariosTutoria.Show();
+            RegistrarTutorAcademico registrarTutor = new RegistrarTutorAcademico();
+            registrarTutor.Show();
             this.Close();
         }
     }

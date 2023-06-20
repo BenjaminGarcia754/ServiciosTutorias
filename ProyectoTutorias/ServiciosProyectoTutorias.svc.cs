@@ -25,6 +25,10 @@ namespace ProyectoTutorias
             return ProfesorDAO.RecuperarListaTutores();
         }
 
+        public List<PeriodoEscolarPOJO> RecuperarPeriodosEscolares()
+        {
+            return PeriodoEscolarDAO.ObtenerPeriodosEscolares();
+        }
 
         //Registrar
         public bool RegistrarFechaTutoría(InformacionTutoriaPOJO tutoria)

@@ -16,7 +16,7 @@ namespace ProyectoTutorias.Modelo.DAO
             try
             {
                 horarioNuevo.idHorarioTutoria = horarioARegistrar.idHorarioTutoria;
-                horarioNuevo.horarioTutoria1 = horarioARegistrar.horarioTutoria1;
+                horarioNuevo.horarioTutoria1 = horarioARegistrar.horarioTutoria;
                 horarioNuevo.idTutoria = horarioARegistrar.idTutoria;
                 horarioNuevo.idTutorado = horarioARegistrar.idTutorado;
                 horarioNuevo.idTutor = horarioARegistrar.idTutor;

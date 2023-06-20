@@ -7,14 +7,18 @@
         mc:Ignorable="d"
         Title="AdministrarHorariosTutoria" Height="450" Width="800">
     <Grid>
-        <Label Content="" HorizontalAlignment="Left" x:Name="lbTipoOperacion" Margin="26,27,0,0" VerticalAlignment="Top" Width="143"/>
-        <Calendar HorizontalAlignment="Left" VerticalAlignment="Top" Margin="509,99,0,0" Height="214" Width="230"/>
-        <ComboBox HorizontalAlignment="Left" Margin="206,138,0,0" VerticalAlignment="Top" Width="194" x:Name="cbNumeroTutoria">
+        <Label Content="Administrar Horarios Tutoria" HorizontalAlignment="Left" x:Name="lbTipoOperacion" Margin="26,27,0,0" VerticalAlignment="Top" Width="277" FontSize="16" FontFamily="Arial Black"/>
+        <Calendar HorizontalAlignment="Left" x:Name="cldCalendarioTutoria" VerticalAlignment="Top" Margin="509,142,0,0" Height="175" Width="230"/>
+        <ComboBox HorizontalAlignment="Left" Margin="48,214,0,0" VerticalAlignment="Top" Width="344" x:Name="cbNumeroTutoria">
             <ComboBoxItem Content="Primera Sesion"/>
             <ComboBoxItem Content="Segunda Sesion"/>
             <ComboBoxItem Content="Tercera Sesion"/>
         </ComboBox>
-
+        <Label Content="Selecciona la sesion de tutoria a la que desea asignar el horario" HorizontalAlignment="Left" Margin="48,145,0,0" VerticalAlignment="Top"/>
+        <Button Content="Regresar" HorizontalAlignment="Left" Margin="669,385,0,0" VerticalAlignment="Top" Width="88" Click="Button_Regresar"/>
+        <Button Content="Asignar fecha" HorizontalAlignment="Left" Margin="48,269,0,0" VerticalAlignment="Top" Click="Button_Asignar_Fecha" Width="130"/>
+        <Label Content="Selecciona El Periodo Escolar&#xD;&#xA;" HorizontalAlignment="Left" Margin="48,80,0,0" VerticalAlignment="Top"/>
+        <ComboBox HorizontalAlignment="Left" Margin="537,90,0,0" VerticalAlignment="Top" Width="176" x:Name="cbPeriodoEscolar" ItemsSource="{Binding periodosEscolares}"/>
 
     </Grid>
 </Window>

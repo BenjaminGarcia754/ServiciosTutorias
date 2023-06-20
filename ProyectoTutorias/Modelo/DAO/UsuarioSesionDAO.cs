@@ -31,7 +31,7 @@ namespace ProyectoTutorias.Modelo.DAO
             catch (Exception)
             {
                 respuesta = false;
-                nuevoMensaje.mensaje = "Usuario Encontrado Satisfactoriamente";
+                nuevoMensaje.mensaje = "El usuario no pudo ser encontrado, porfavor verifique sus credenciales";
                 nuevoMensaje.confirmacion = respuesta;
             }
             
