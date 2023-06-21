@@ -1103,6 +1103,9 @@ namespace ServiceReference1
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiciosProyectoTutorias/ObtenerProgramaEducativo", ReplyAction="http://tempuri.org/IServiciosProyectoTutorias/ObtenerProgramaEducativoResponse")]
         System.Threading.Tasks.Task<ServiceReference1.ProgramaEducativoPOJO[]> ObtenerProgramaEducativoAsync();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiciosProyectoTutorias/RecuperarTutoradosSinTutor", ReplyAction="http://tempuri.org/IServiciosProyectoTutorias/RecuperarTutoradosSinTutorResponse")]
+        System.Threading.Tasks.Task<ServiceReference1.TutoradoPOJO[]> RecuperarTutoradosSinTutorAsync();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiciosProyectoTutorias/RegistrarFechaTutoría", ReplyAction="http://tempuri.org/IServiciosProyectoTutorias/RegistrarFechaTutoríaResponse")]
         System.Threading.Tasks.Task<bool> RegistrarFechaTutoríaAsync(ServiceReference1.InformacionTutoriaPOJO tutoria);
         
@@ -1190,6 +1193,11 @@ namespace ServiceReference1
         public System.Threading.Tasks.Task<ServiceReference1.ProgramaEducativoPOJO[]> ObtenerProgramaEducativoAsync()
         {
             return base.Channel.ObtenerProgramaEducativoAsync();
+        }
+        
+        public System.Threading.Tasks.Task<ServiceReference1.TutoradoPOJO[]> RecuperarTutoradosSinTutorAsync()
+        {
+            return base.Channel.RecuperarTutoradosSinTutorAsync();
         }
         
         public System.Threading.Tasks.Task<bool> RegistrarFechaTutoríaAsync(ServiceReference1.InformacionTutoriaPOJO tutoria)

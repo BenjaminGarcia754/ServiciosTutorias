@@ -44,5 +44,12 @@ namespace FrontEndProyectoTutorias.Views.Menu
             registrarTutorado.Show();
             this.Close();
         }
+
+        private void Button_Asignar_Tutor(object sender, RoutedEventArgs e)
+        {
+            AsignarTutorAEstudiante asignarTutorAEstudiante = new AsignarTutorAEstudiante();
+            asignarTutorAEstudiante.Show();
+            this.Close();
+        }
     }
 }

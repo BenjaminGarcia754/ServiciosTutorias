@@ -36,7 +36,38 @@ namespace ProyectoTutorias.Modelo.DAO
             return respuesta;
         }
 
+        public static List<TutoradoPOJO> RecuperarTutoradosSinTutor()
+        {
+            List<TutoradoPOJO> tutoradosSinTutor = new List<TutoradoPOJO>();
+            try
+            {
+                var conexionBD = Conexion.GenerarConexion();
+                var tutorados = (from tutoradosQuery in conexionBD.Tutorado
+                                 where tutoradosQuery.tutorAcademico == 8
+                                 select tutoradosQuery);
 
+                foreach (var tutoradoFor in tutorados)
+                {
+                    TutoradoPOJO tutoradoModelo = new TutoradoPOJO();
+                    tutoradoModelo.idTutorado = tutoradoFor.idTutorado;
+                    tutoradoModelo.idProgramaEducativo = tutoradoFor.idProgramaEducativo;
+                    tutoradoModelo.tutorAcademico = tutoradoFor.tutorAcademico;
+                    tutoradoModelo.estaActivo = tutoradoFor.estaActivo;
+                    tutoradoModelo.estaEnRiesgo = tutoradoFor.estaEnRiesgo;
+                    tutoradoModelo.nombre = tutoradoFor.nombre;
+                    tutoradoModelo.matricula = tutoradoFor.matricula;
+                    tutoradoModelo.telefono = tutoradoFor.telefono;
+                    tutoradoModelo.numeroCambiosTutor = tutoradoFor.numeroCambiosTutor;
+
+                    tutoradosSinTutor.Add(tutoradoModelo);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            return tutoradosSinTutor;
+        }
 
         public static bool EditarEstudiante(TutoradoPOJO nuevoTutorado)
         {

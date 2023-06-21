@@ -38,7 +38,7 @@ namespace ProyectoTutorias.Modelo.DAO
             {
                 var conexionBD = Conexion.GenerarConexion();
                 var tutoresRecuperados = (from tutoresQuery in conexionBD.Profesor
-                                          where tutoresQuery.idRol == 3
+                                          where tutoresQuery.idRol == 3 && tutoresQuery.numeroDeEmpleado!="0000"
                                           select tutoresQuery);
 
                 foreach (var profesor in tutoresRecuperados)

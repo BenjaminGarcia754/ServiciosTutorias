@@ -35,6 +35,11 @@ namespace ProyectoTutorias
             return ProgramaEducativoDAO.ObtenerProgramaEducativo().ToList();
         }
 
+        public List<TutoradoPOJO> RecuperarTutoradosSinTutor()
+        {
+            return TutoradoDAO.RecuperarTutoradosSinTutor();
+        }
+
         //Registrar
         public bool RegistrarFechaTutoría(InformacionTutoriaPOJO tutoria)
         {
