@@ -23,6 +23,9 @@ namespace ProyectoTutorias
         [OperationContract]
         List<PeriodoEscolarPOJO> RecuperarPeriodosEscolares();
 
+        [OperationContract]
+        List<ProgramaEducativoPOJO> ObtenerProgramaEducativo();
+
         //Registrar
         [OperationContract]
         bool RegistrarFechaTutoría(InformacionTutoriaPOJO tutoria);

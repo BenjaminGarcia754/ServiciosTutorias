@@ -215,6 +215,103 @@ namespace ServiceReference1
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.1.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ProgramaEducativoPOJO", Namespace="http://schemas.datacontract.org/2004/07/ProyectoTutorias.Modelo.POJO")]
+    public partial class ProgramaEducativoPOJO : object
+    {
+        
+        private int anioField;
+        
+        private string areaField;
+        
+        private string carreraField;
+        
+        private string claveField;
+        
+        private int idCoordinadorField;
+        
+        private int idProgramaEducativoField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int anio
+        {
+            get
+            {
+                return this.anioField;
+            }
+            set
+            {
+                this.anioField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string area
+        {
+            get
+            {
+                return this.areaField;
+            }
+            set
+            {
+                this.areaField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string carrera
+        {
+            get
+            {
+                return this.carreraField;
+            }
+            set
+            {
+                this.carreraField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string clave
+        {
+            get
+            {
+                return this.claveField;
+            }
+            set
+            {
+                this.claveField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int idCoordinador
+        {
+            get
+            {
+                return this.idCoordinadorField;
+            }
+            set
+            {
+                this.idCoordinadorField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int idProgramaEducativo
+        {
+            get
+            {
+                return this.idProgramaEducativoField;
+            }
+            set
+            {
+                this.idProgramaEducativoField = value;
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.1.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="TutoradoPOJO", Namespace="http://schemas.datacontract.org/2004/07/ProyectoTutorias.Modelo.POJO")]
     public partial class TutoradoPOJO : object
     {
@@ -1003,6 +1100,9 @@ namespace ServiceReference1
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiciosProyectoTutorias/RecuperarPeriodosEscolares", ReplyAction="http://tempuri.org/IServiciosProyectoTutorias/RecuperarPeriodosEscolaresResponse")]
         System.Threading.Tasks.Task<ServiceReference1.PeriodoEscolarPOJO[]> RecuperarPeriodosEscolaresAsync();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiciosProyectoTutorias/ObtenerProgramaEducativo", ReplyAction="http://tempuri.org/IServiciosProyectoTutorias/ObtenerProgramaEducativoResponse")]
+        System.Threading.Tasks.Task<ServiceReference1.ProgramaEducativoPOJO[]> ObtenerProgramaEducativoAsync();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiciosProyectoTutorias/RegistrarFechaTutoría", ReplyAction="http://tempuri.org/IServiciosProyectoTutorias/RegistrarFechaTutoríaResponse")]
         System.Threading.Tasks.Task<bool> RegistrarFechaTutoríaAsync(ServiceReference1.InformacionTutoriaPOJO tutoria);
         
@@ -1085,6 +1185,11 @@ namespace ServiceReference1
         public System.Threading.Tasks.Task<ServiceReference1.PeriodoEscolarPOJO[]> RecuperarPeriodosEscolaresAsync()
         {
             return base.Channel.RecuperarPeriodosEscolaresAsync();
+        }
+        
+        public System.Threading.Tasks.Task<ServiceReference1.ProgramaEducativoPOJO[]> ObtenerProgramaEducativoAsync()
+        {
+            return base.Channel.ObtenerProgramaEducativoAsync();
         }
         
         public System.Threading.Tasks.Task<bool> RegistrarFechaTutoríaAsync(ServiceReference1.InformacionTutoriaPOJO tutoria)

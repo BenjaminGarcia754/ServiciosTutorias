@@ -37,5 +37,12 @@ namespace FrontEndProyectoTutorias.Views.Menu
             registrarTutor.Show();
             this.Close();
         }
+
+        private void Button_Registrar_Estudiante(object sender, RoutedEventArgs e)
+        {
+            RegistrarTutorado registrarTutorado = new RegistrarTutorado();
+            registrarTutorado.Show();
+            this.Close();
+        }
     }
 }

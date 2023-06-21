@@ -10,6 +10,7 @@
         <Label Content="Menu Coordinador" HorizontalAlignment="Left" Margin="57,37,0,0" VerticalAlignment="Top"/>
         <Button Content="Registrar Tutor Academico" HorizontalAlignment="Left" Margin="57,111,0,0" VerticalAlignment="Top" Click="Button_Registrar_Tutor_Academico"/>
         <Button Content="Regresar" HorizontalAlignment="Left" Margin="681,372,0,0" VerticalAlignment="Top" Click="Button_Regresar"/>
+        <Button Content="Registrar Estudiante" HorizontalAlignment="Left" Margin="59,164,0,0" VerticalAlignment="Top" Click="Button_Registrar_Estudiante"/>
 
     </Grid>
 </Window>

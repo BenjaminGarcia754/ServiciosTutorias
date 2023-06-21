@@ -30,6 +30,11 @@ namespace ProyectoTutorias
             return PeriodoEscolarDAO.ObtenerPeriodosEscolares();
         }
 
+        public List<ProgramaEducativoPOJO> ObtenerProgramaEducativo()
+        {
+            return ProgramaEducativoDAO.ObtenerProgramaEducativo().ToList();
+        }
+
         //Registrar
         public bool RegistrarFechaTutoría(InformacionTutoriaPOJO tutoria)
         {
